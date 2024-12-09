@@ -36,7 +36,7 @@ console.log(x.compareAge(y, z));
 
 // esercizio 2
 
-let animals = [];
+const animals = [];
 let i = 0;
 
 const form = document.getElementById("form");
@@ -53,19 +53,30 @@ class Pet {
         this.petType = _petType;
         this.petRace = _petRace;
     }
+    compareOwner(animals) {
+        for (let j = 0; j < animals.length -1; j++) {
+            if (this.ownerName === animals[j].ownerName)
+                console.log(true);
+            else console.log(false);
+            
+        }
+
+    }
 }
 
 form.addEventListener("submit", function (e) {
     e.preventDefault()
     ul.innerHTML = "";
+   
     animals[i] = new Pet(myPetName.value, myOwnerName.value, myPetType.value, myPetRace.value);
     animals.forEach(e => {
         let li = document.createElement("li")
         li.innerHTML = `Nome pet: ${e.petName}, Nome padrone: ${e.ownerName}, Tipo di animle: ${e.petType}, Razza: ${e.petRace}`
         ul.appendChild(li)
     });
+    animals[i].compareOwner(animals)
     i++
 })
 
-console.log(animals);
+
 
