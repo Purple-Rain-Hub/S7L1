@@ -1,27 +1,27 @@
 // esercizio 1
-class User{
-    constructor(_firstName, _lastName, _age, _location){
+class User {
+    constructor(_firstName, _lastName, _age, _location) {
         this.firstName = _firstName;
         this.lastName = _lastName;
         this.age = _age;
         this.location = _location;
     }
-    compareAge(x, y){
-        if (x.age > y.age && x.age > this.age){
-            if (y.age > this.age){
+    compareAge(x, y) {
+        if (x.age > y.age && x.age > this.age) {
+            if (y.age > this.age) {
                 return `${x.firstName} è più vecchio di ${y.firstName}, ${y.firstName} è più vecchio di ${this.firstName}`
             }
-            else 
-            return `${x.firstName} è più vecchio di ${this.firstName}, ${this.firstName} è più vecchio di ${y.firstName}`
+            else
+                return `${x.firstName} è più vecchio di ${this.firstName}, ${this.firstName} è più vecchio di ${y.firstName}`
         }
-        if (y.age > x.age && y.age > this.age){
-            if(x.age > this.age){
+        if (y.age > x.age && y.age > this.age) {
+            if (x.age > this.age) {
                 return `${y.firstName} è più vecchio di ${x.firstName}, ${x.firstName} è più vecchio di ${this.firstName}`
             }
             else return `${y.firstName} è più vecchio di ${this.firstName}, ${this.firstName} è più vecchio di ${x.firstName}`
         }
         if (this.age > x.age && this.age > y.age)
-            if (x.age > y.age){
+            if (x.age > y.age) {
                 return `${this.firstName} è più vecchio di ${x.firstName}, ${x.firstName} è più vecchio di ${y.firstName}`
             }
             else return `${this.firstName} è più vecchio di ${x.firstName}, ${y.firstName} è più vecchio di ${x.firstName}`
@@ -36,6 +36,36 @@ console.log(x.compareAge(y, z));
 
 // esercizio 2
 
+let animals = [];
+let i = 0;
 
+const form = document.getElementById("form");
+const myPetName = document.getElementById("petName");
+const myOwnerName = document.getElementById("ownerName");
+const myPetType = document.getElementById("petType");
+const myPetRace = document.getElementById("petRace");
+const ul = document.getElementById("ul");
 
+class Pet {
+    constructor(_petName, _ownerName, _petType, _petRace) {
+        this.petName = _petName;
+        this.ownerName = _ownerName;
+        this.petType = _petType;
+        this.petRace = _petRace;
+    }
+}
+
+form.addEventListener("submit", function (e) {
+    e.preventDefault()
+    ul.innerHTML = "";
+    animals[i] = new Pet(myPetName.value, myOwnerName.value, myPetType.value, myPetRace.value);
+    animals.forEach(e => {
+        let li = document.createElement("li")
+        li.innerHTML = `Nome pet: ${e.petName}, Nome padrone: ${e.ownerName}, Tipo di animle: ${e.petType}, Razza: ${e.petRace}`
+        ul.appendChild(li)
+    });
+    i++
+})
+
+console.log(animals);
 
